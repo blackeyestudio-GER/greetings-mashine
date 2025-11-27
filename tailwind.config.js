@@ -17,6 +17,7 @@ export default {
       'eerie-black': '#1C1E1E',
       'night': '#111212',
       'dark-slate-gray': '#1E4545',
+      'dark-slate-gray-darker': '#1A3A3A', // Eine dunklere Variante für Hover-Effekte
     },
     extend: {
       saturate: {
