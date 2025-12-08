@@ -2,15 +2,15 @@
   <div class="p-5 bg-eerie-black rounded-lg text-gray-100">
     <section class="bg-gray-700 p-6 rounded-lg shadow-md max-w-lg mx-auto">
       <div class="flex flex-col gap-4">
-        <button @click="exportServers" class="w-full px-8 py-5 border-2 border-green-500 rounded-lg cursor-pointer text-xl transition-colors duration-200 text-green-500 flex items-center justify-center hover:bg-green-500 hover:text-white font-semibold">
+        <button @click="exportServers" class="btn-export">
           <Icon icon="heroicons:server-20-solid" class="w-8 h-8 mr-3" />
           Servers
         </button>
-        <button @click="exportGreetings" class="w-full px-8 py-5 border-2 border-green-500 rounded-lg cursor-pointer text-xl transition-colors duration-200 text-green-500 flex items-center justify-center hover:bg-green-500 hover:text-white font-semibold">
+        <button @click="exportGreetings" class="btn-export">
           <Icon icon="heroicons:chat-bubble-left-ellipsis-20-solid" class="w-8 h-8 mr-3" />
           Greetings
         </button>
-        <button @click="exportAll" class="w-full px-8 py-5 border-2 border-blue-500 rounded-lg cursor-pointer text-xl transition-colors duration-200 text-blue-500 flex items-center justify-center hover:bg-blue-500 hover:text-white font-semibold">
+        <button @click="exportAll" class="btn-export-all">
           <Icon icon="heroicons:arrow-down-tray-20-solid" class="w-8 h-8 mr-3" />
           Everything
         </button>

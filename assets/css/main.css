@@ -1,3 +1,184 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 body {
     @apply bg-night text-dim-gray;
+}
+
+/* ========================================
+   BUTTON COMPONENTS
+   ======================================== */
+
+@layer components {
+    /* Base button with common properties */
+    .btn {
+        @apply rounded-lg transition-colors duration-200 cursor-pointer inline-flex items-center justify-center;
+    }
+
+    /* Button sizes */
+    .btn-icon {
+        @apply p-3 border-2;
+    }
+
+    .btn-md {
+        @apply px-6 py-3 border-2 font-semibold;
+    }
+
+    .btn-lg {
+        @apply px-8 py-4 border-2 text-lg font-semibold;
+    }
+
+    .btn-xl {
+        @apply px-8 py-5 border-2 text-xl font-semibold;
+    }
+
+    /* Button color variants */
+    .btn-primary {
+        @apply border-green-500 text-green-500 hover:bg-green-500 hover:text-white;
+    }
+
+    .btn-secondary {
+        @apply border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white;
+    }
+
+    .btn-warning {
+        @apply border-yellow-500 text-yellow-500 hover:bg-yellow-500 hover:text-white;
+    }
+
+    .btn-danger {
+        @apply border-red-500 text-red-500 hover:bg-red-500 hover:text-white;
+    }
+
+    .btn-neutral {
+        @apply border-gray-500 text-gray-300 hover:bg-gray-600;
+    }
+
+    /* Button states */
+    .btn:disabled {
+        @apply opacity-50 cursor-not-allowed;
+    }
+
+    /* Common button combinations (shortcuts) */
+    .btn-add {
+        @apply p-3 border-2 rounded-lg transition-colors duration-200 cursor-pointer inline-flex items-center justify-center;
+        border-color: var(--color-success);
+        color: var(--color-success);
+    }
+    
+    .btn-add:hover {
+        background-color: var(--color-success);
+        color: var(--color-text-secondary);
+    }
+
+    .btn-edit {
+        @apply p-3 border-2 rounded-lg transition-colors duration-200 cursor-pointer inline-flex items-center justify-center;
+        border-color: var(--color-warning);
+        color: var(--color-warning);
+    }
+    
+    .btn-edit:hover {
+        background-color: var(--color-warning);
+        color: var(--color-text-secondary);
+    }
+
+    .btn-delete {
+        @apply p-3 border-2 rounded-lg transition-colors duration-200 cursor-pointer inline-flex items-center justify-center;
+        border-color: var(--color-danger);
+        color: var(--color-danger);
+    }
+    
+    .btn-delete:hover {
+        background-color: var(--color-danger);
+        color: var(--color-text-secondary);
+    }
+
+    .btn-copy {
+        @apply p-3 border-2 rounded-lg transition-colors duration-200 cursor-pointer inline-flex items-center justify-center;
+        border-color: var(--color-info);
+        color: var(--color-info);
+    }
+    
+    .btn-copy:hover {
+        background-color: var(--color-info);
+        color: var(--color-text-secondary);
+    }
+
+    .btn-action-primary {
+        @apply px-8 py-4 border-2 text-lg font-semibold rounded-lg transition-colors duration-200 cursor-pointer inline-flex items-center justify-center;
+        border-color: var(--color-success);
+        color: var(--color-success);
+    }
+    
+    .btn-action-primary:hover {
+        background-color: var(--color-success);
+        color: var(--color-text-secondary);
+    }
+
+    .btn-action-secondary {
+        @apply px-8 py-4 border-2 text-lg font-semibold rounded-lg transition-colors duration-200 cursor-pointer inline-flex items-center justify-center;
+        border-color: var(--color-info);
+        color: var(--color-info);
+    }
+    
+    .btn-action-secondary:hover {
+        background-color: var(--color-info);
+        color: var(--color-text-secondary);
+    }
+
+    .btn-cancel {
+        @apply px-8 py-4 border-2 text-lg font-semibold rounded-lg transition-colors duration-200 cursor-pointer inline-flex items-center justify-center;
+        border-color: var(--color-border);
+        color: var(--color-text-muted);
+    }
+    
+    .btn-cancel:hover {
+        background-color: var(--color-hover);
+        color: var(--color-text-primary);
+    }
+
+    /* Full-width export/import buttons */
+    .btn-export {
+        @apply w-full px-8 py-5 border-2 text-xl font-semibold rounded-lg transition-colors duration-200 cursor-pointer inline-flex items-center justify-center;
+        border-color: var(--color-success);
+        color: var(--color-success);
+    }
+    
+    .btn-export:hover {
+        background-color: var(--color-success);
+        color: var(--color-text-secondary);
+    }
+
+    .btn-export-all {
+        @apply w-full px-8 py-5 border-2 text-xl font-semibold rounded-lg transition-colors duration-200 cursor-pointer inline-flex items-center justify-center;
+        border-color: var(--color-info);
+        color: var(--color-info);
+    }
+    
+    .btn-export-all:hover {
+        background-color: var(--color-info);
+        color: var(--color-text-secondary);
+    }
+
+    .btn-import {
+        @apply w-full px-8 py-5 border-2 text-xl font-semibold rounded-lg transition-colors duration-200 cursor-pointer inline-flex items-center justify-center;
+        border-color: var(--color-warning);
+        color: var(--color-warning);
+    }
+    
+    .btn-import:hover {
+        background-color: var(--color-warning);
+        color: var(--color-text-secondary);
+    }
+
+    .btn-import-all {
+        @apply w-full px-8 py-5 border-2 text-xl font-semibold rounded-lg transition-colors duration-200 cursor-pointer inline-flex items-center justify-center;
+        border-color: var(--color-danger);
+        color: var(--color-danger);
+    }
+    
+    .btn-import-all:hover {
+        background-color: var(--color-danger);
+        color: var(--color-text-secondary);
+    }
 }

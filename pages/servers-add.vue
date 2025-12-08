@@ -14,7 +14,7 @@
               <Icon icon="heroicons:photo-20-solid" class="w-16 h-16 text-gray-400" />
             </div>
             <div class="w-full flex flex-col gap-2">
-              <label class="px-3 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-md cursor-pointer text-sm transition-colors duration-200 flex items-center justify-center">
+              <label class="px-3 py-2 rounded-md cursor-pointer text-sm transition-colors duration-200 flex items-center justify-center" style="background-color: var(--color-info); color: var(--color-text-secondary);">
                 <Icon icon="heroicons:arrow-up-tray-20-solid" class="w-4 h-4 mr-1" />
                 Upload
                 <input type="file" accept="image/*" @change="handleIconUpload" class="hidden" />
@@ -22,7 +22,8 @@
               <button 
                 v-if="editedServer.icon" 
                 @click="removeIcon" 
-                class="px-3 py-2 bg-red-500 hover:bg-red-600 text-white rounded-md text-sm transition-colors duration-200"
+                class="px-3 py-2 rounded-md text-sm transition-colors duration-200"
+                style="background-color: var(--color-danger); color: var(--color-text-secondary);"
               >
                 Remove
               </button>
@@ -57,7 +58,7 @@
       <div class="flex gap-3 mt-6 justify-end">
         <button 
           @click="goToList" 
-          class="px-8 py-4 border-2 border-gray-500 rounded-lg cursor-pointer text-lg transition-colors duration-200 text-gray-300 hover:bg-gray-600 flex items-center justify-center"
+          class="btn-cancel"
         >
           <Icon icon="heroicons:x-mark-20-solid" class="w-6 h-6 mr-2" />
           Cancel
@@ -66,7 +67,7 @@
         <button 
           @click="saveServer" 
           :disabled="!editedServer.name.trim() || !editedServer.url.trim()"
-          class="px-8 py-4 border-2 border-green-500 rounded-lg cursor-pointer text-lg transition-colors duration-200 text-green-500 flex items-center justify-center hover:bg-green-500 hover:text-white disabled:opacity-50 disabled:cursor-not-allowed"
+          class="btn-action-primary disabled:opacity-50 disabled:cursor-not-allowed"
         >
           <Icon icon="heroicons:arrow-down-tray-20-solid" class="w-6 h-6 mr-2" />
           {{ isEditing ? 'Save Changes' : 'Create Server' }}

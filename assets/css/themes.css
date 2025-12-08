@@ -1,5 +1,6 @@
+/* Note: All action colors (success, info, warning, danger) are now defined per-theme */
+
 /* Default Theme (Dark - Ocean & Teal) */
-:root,
 [data-theme="default"] {
   --color-primary: #3AA1BD;
   --color-secondary: #869698;
@@ -11,6 +12,12 @@
   --color-text-muted: #6B7280;
   --color-border: #374151;
   --color-hover: #1F2937;
+  
+  /* Ocean-themed action colors */
+  --color-success: #5B8A8E;
+  --color-info: #6B8E91;
+  --color-warning: #C4A574;
+  --color-danger: #B17C74;
 }
 
 /* Light Theme (Bright & Clean) */
@@ -25,6 +32,12 @@
   --color-text-muted: #6B7280;
   --color-border: #D1D5DB;
   --color-hover: #F9FAFB;
+  
+  /* Clean bright action colors */
+  --color-success: #16A34A;
+  --color-info: #2563EB;
+  --color-warning: #CA8A04;
+  --color-danger: #DC2626;
 }
 
 /* Darcula Theme (JetBrains Classic) */
@@ -39,6 +52,12 @@
   --color-text-muted: #808080;
   --color-border: #555555;
   --color-hover: #4B4F54;
+  
+  /* JetBrains IDE action colors */
+  --color-success: #6A8759;
+  --color-info: #6897BB;
+  --color-warning: #FFC66D;
+  --color-danger: #CC666E;
 }
 
 /* Coffee Theme (Warm & Cozy) */
@@ -53,6 +72,12 @@
   --color-text-muted: #A1887F;
   --color-border: #6D4C41;
   --color-hover: #795548;
+  
+  /* Warm earthy action colors */
+  --color-success: #8BC34A;
+  --color-info: #8B7355;
+  --color-warning: #FFA726;
+  --color-danger: #D17C6F;
 }
 
 /* Christmas Theme (Red & Green) */
@@ -67,6 +92,12 @@
   --color-text-muted: #95D5B2;
   --color-border: #40916C;
   --color-hover: #52B788;
+  
+  /* Christmas-themed action colors */
+  --color-success: #165B33;
+  --color-info: #C41E3A;
+  --color-warning: #FFD700;
+  --color-danger: #8B0000;
 }
 
 /* Halloween Theme (Spooky Orange & Purple) */
@@ -81,6 +112,12 @@
   --color-text-muted: #B388EB;
   --color-border: #5E2E5E;
   --color-hover: #6D3A6D;
+  
+  /* Halloween-themed action colors */
+  --color-success: #9B59B6;
+  --color-info: #FF6600;
+  --color-warning: #FFA500;
+  --color-danger: #8B008B;
 }
 
 /* Valentine Theme (Pink & Romance) */
@@ -95,6 +132,12 @@
   --color-text-muted: #FF94C8;
   --color-border: #8B4789;
   --color-hover: #A05AA0;
+  
+  /* Valentine pink-themed action colors */
+  --color-success: #FF69B4;
+  --color-info: #FF1493;
+  --color-warning: #FFB6C1;
+  --color-danger: #C71585;
 }
 
 /* St. Patrick Theme (Lucky Green) */
@@ -109,6 +152,12 @@
   --color-text-muted: #7CFC00;
   --color-border: #3CB371;
   --color-hover: #4CBB17;
+  
+  /* St. Patrick green-themed action colors */
+  --color-success: #00A86B;
+  --color-info: #50C878;
+  --color-warning: #FFD700;
+  --color-danger: #8B4513;
 }
 
 /* Easter Theme (Pastel Spring) */
@@ -123,6 +172,12 @@
   --color-text-muted: #8D6E63;
   --color-border: #C4B5A0;
   --color-hover: #D7C8B8;
+  
+  /* Easter pastel action colors */
+  --color-success: #98D8C8;
+  --color-info: #B19CD9;
+  --color-warning: #FFB347;
+  --color-danger: #E57373;
 }
 
 /* New Year Theme (Gold & Midnight) */
@@ -137,6 +192,12 @@
   --color-text-muted: #B0C4DE;
   --color-border: #4682B4;
   --color-hover: #5A8FD1;
+  
+  /* New Year celebration action colors */
+  --color-success: #FFD700;
+  --color-info: #C0C0C0;
+  --color-warning: #FFA500;
+  --color-danger: #CD5C5C;
 }
 
 /* Windows Theme (Microsoft Classic) */
@@ -151,6 +212,12 @@
   --color-text-muted: #B3B3B3;
   --color-border: #505050;
   --color-hover: #4D4D4D;
+  
+  /* Windows action colors */
+  --color-success: #107C10;
+  --color-info: #0078D4;
+  --color-warning: #FFB900;
+  --color-danger: #E81123;
 }
 
 /* macOS Theme (Apple Aqua) */
@@ -165,6 +232,12 @@
   --color-text-muted: #8E8E93;
   --color-border: #48484A;
   --color-hover: #505052;
+  
+  /* macOS action colors */
+  --color-success: #34C759;
+  --color-info: #007AFF;
+  --color-warning: #FF9500;
+  --color-danger: #FF3B30;
 }
 
 /* Simpsons Theme (Springfield Yellow) */
@@ -179,6 +252,12 @@
   --color-text-muted: #8BB4D4;
   --color-border: #2E8BC0;
   --color-hover: #1B4965;
+  
+  /* Simpsons-themed action colors */
+  --color-success: #FFD90F;
+  --color-info: #2E8BC0;
+  --color-warning: #FFA824;
+  --color-danger: #E74C3C;
 }
 
 /* Super Mario Theme (Mushroom Kingdom) */
@@ -193,6 +272,12 @@
   --color-text-muted: #A0A0A0;
   --color-border: #E52521;
   --color-hover: #003F91;
+  
+  /* Mario-themed action colors */
+  --color-success: #00A550;
+  --color-info: #049CD8;
+  --color-warning: #FFD700;
+  --color-danger: #E52521;
 }
 
 /* Yoshi Theme (Dinosaur Green) */
@@ -207,6 +292,12 @@
   --color-text-muted: #5A5A5A;
   --color-border: #7ED957;
   --color-hover: #D8D8D8;
+  
+  /* Yoshi-themed action colors */
+  --color-success: #4BB74C;
+  --color-info: #7ED957;
+  --color-warning: #FFB347;
+  --color-danger: #E57373;
 }
 
 /* Pac-Man Theme (Arcade Classic) */
@@ -221,6 +312,12 @@
   --color-text-muted: #00FFFF;
   --color-border: #FF0000;
   --color-hover: #2121DE;
+  
+  /* Pac-Man arcade action colors */
+  --color-success: #FFFF00;
+  --color-info: #00FFFF;
+  --color-warning: #FFA500;
+  --color-danger: #FF0000;
 }
 
 /* SNES Theme (Super Nintendo) */
@@ -235,6 +332,12 @@
   --color-text-muted: #B39ADB;
   --color-border: #8A61C1;
   --color-hover: #6A6A6A;
+  
+  /* SNES purple-themed action colors */
+  --color-success: #9575CD;
+  --color-info: #8A61C1;
+  --color-warning: #FFB74D;
+  --color-danger: #E57373;
 }
 
 /* Famicom Theme (Nintendo Red & White) */
@@ -249,6 +352,12 @@
   --color-text-muted: #666666;
   --color-border: #D8232A;
   --color-hover: #F5F5F5;
+  
+  /* Famicom red-themed action colors */
+  --color-success: #43A047;
+  --color-info: #1976D2;
+  --color-warning: #FB8C00;
+  --color-danger: #D8232A;
 }
 
 /* Atari Theme (Rainbow Classic) */
@@ -263,6 +372,12 @@
   --color-text-muted: #DC143C;
   --color-border: #FF6600;
   --color-hover: #2A2A2A;
+  
+  /* Atari rainbow action colors */
+  --color-success: #00FF00;
+  --color-info: #FF6600;
+  --color-warning: #FFD700;
+  --color-danger: #DC143C;
 }
 
 /* Xbox Theme (Microsoft Gaming) */
@@ -277,6 +392,12 @@
   --color-text-muted: #B8B8B8;
   --color-border: #107C10;
   --color-hover: #3A3A3A;
+  
+  /* Xbox green-themed action colors */
+  --color-success: #107C10;
+  --color-info: #80C342;
+  --color-warning: #FFC107;
+  --color-danger: #D32F2F;
 }
 
 /* PlayStation Theme (Sony Blue) */
@@ -291,6 +412,12 @@
   --color-text-muted: #666666;
   --color-border: #0070CC;
   --color-hover: #F5F5F5;
+  
+  /* PlayStation blue-themed action colors */
+  --color-success: #4CAF50;
+  --color-info: #0070CC;
+  --color-warning: #FF9800;
+  --color-danger: #F44336;
 }
 
 /* Apply theme colors */

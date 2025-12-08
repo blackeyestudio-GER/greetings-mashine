@@ -2,6 +2,7 @@
 import { onMounted, computed } from 'vue';
 import { Icon } from '@iconify/vue';
 import { useGreetingsData, type Greeting } from '~/composables/useGreetingsData';
+import { DAY_INDEX_MAP } from '~/constants';
 
 const { 
   greetings, 
@@ -21,8 +22,7 @@ onMounted(() => {
 
 // Get greetings that are valid for today
 const todayGreetings = computed(() => {
-  const days = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
-  const today = days[new Date().getDay()] as keyof Greeting['days'];
+  const today = DAY_INDEX_MAP[new Date().getDay()] as keyof Greeting['days'];
   
   return greetings.value.filter(greeting => greeting.days[today]);
 });
@@ -79,14 +79,14 @@ const hasContent = computed(() => servers.value.length > 0 || greetings.value.le
           <div class="flex gap-4 justify-center mt-6">
             <button 
               @click="router.push('/greetings-add')" 
-              class="px-8 py-4 border-2 border-green-500 text-green-500 hover:bg-green-500 hover:text-white text-lg rounded-lg transition-colors duration-200 font-semibold flex items-center justify-center"
+              class="btn-action-primary"
             >
               <Icon icon="heroicons:plus-20-solid" class="w-7 h-7 mr-2" />
               Create First Greeting
             </button>
             <button 
               @click="router.push('/servers-add')" 
-              class="px-8 py-4 border-2 border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white text-lg rounded-lg transition-colors duration-200 font-semibold flex items-center justify-center"
+              class="btn-action-secondary"
             >
               <Icon icon="heroicons:plus-20-solid" class="w-7 h-7 mr-2" />
               Add First Server
@@ -103,7 +103,7 @@ const hasContent = computed(() => servers.value.length > 0 || greetings.value.le
         <p class="text-gray-300 mb-4">No servers added yet.</p>
         <button 
           @click="router.push('/servers-add')" 
-          class="px-8 py-4 border-2 border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white text-lg rounded-lg transition-colors duration-200 font-semibold flex items-center justify-center mx-auto"
+          class="btn-action-secondary mx-auto"
         >
           <Icon icon="heroicons:plus-20-solid" class="w-6 h-6 mr-2" />
           Add Server
@@ -115,7 +115,7 @@ const hasContent = computed(() => servers.value.length > 0 || greetings.value.le
         <p class="text-gray-300 mb-4">No greetings created yet.</p>
         <button 
           @click="router.push('/greetings-add')" 
-          class="px-8 py-4 border-2 border-green-500 text-green-500 hover:bg-green-500 hover:text-white text-lg rounded-lg transition-colors duration-200 font-semibold flex items-center justify-center mx-auto"
+          class="btn-action-primary mx-auto"
         >
           <Icon icon="heroicons:plus-20-solid" class="w-6 h-6 mr-2" />
           Create Greeting
@@ -169,14 +169,14 @@ const hasContent = computed(() => servers.value.length > 0 || greetings.value.le
               <div class="flex gap-2">
                 <button 
                   @click="copyAndOpenServer(greeting.text, server.url, server.id)" 
-                  class="p-3 border-2 border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white rounded-lg transition-colors duration-200"
+                  class="btn-copy"
                   title="Copy & Open"
                 >
                   <Icon icon="heroicons:document-duplicate-20-solid" class="w-6 h-6" />
                 </button>
                 <button 
                   @click="editGreeting(greetings.indexOf(greeting))" 
-                  class="p-3 border-2 border-yellow-500 text-yellow-500 hover:bg-yellow-500 hover:text-white rounded-lg transition-colors duration-200"
+                  class="btn-edit"
                   title="Edit"
                 >
                   <Icon icon="heroicons:pencil-20-solid" class="w-6 h-6" />

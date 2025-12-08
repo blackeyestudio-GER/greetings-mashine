@@ -4,7 +4,7 @@
       <div class="flex justify-end items-center mb-5 pb-3 border-b border-gray-600">
         <button 
           @click="goToAddServer" 
-          class="p-3 border-2 border-green-500 text-green-500 hover:bg-green-500 hover:text-white rounded-lg transition-colors duration-200"
+          class="btn-add"
           title="New Server"
         >
           <Icon icon="heroicons:plus-20-solid" class="w-6 h-6" />
@@ -15,7 +15,7 @@
         <p class="mb-4">No servers yet.</p>
         <button 
           @click="goToAddServer"
-          class="px-8 py-4 border-2 border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white text-lg rounded-lg transition-colors duration-200 font-semibold flex items-center justify-center mx-auto"
+          class="btn-action-secondary mx-auto"
         >
           <Icon icon="heroicons:plus-20-solid" class="w-6 h-6 mr-2" />
           Add First Server
@@ -47,14 +47,14 @@
             <div class="flex-1 flex justify-end gap-2">
               <button 
                 @click="editServer(index)" 
-                class="p-3 border-2 border-yellow-500 text-yellow-500 hover:bg-yellow-500 hover:text-white rounded-lg transition-colors duration-200"
+                class="btn-edit"
                 title="Edit"
               >
                 <Icon icon="heroicons:pencil-20-solid" class="w-6 h-6" />
               </button>
               <button 
                 @click="deleteServer(index)" 
-                class="p-3 border-2 border-red-500 text-red-500 hover:bg-red-500 hover:text-white rounded-lg transition-colors duration-200"
+                class="btn-delete"
                 title="Delete"
               >
                 <Icon icon="heroicons:trash-20-solid" class="w-6 h-6" />

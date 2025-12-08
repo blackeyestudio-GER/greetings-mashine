@@ -21,7 +21,7 @@
             <p class="text-gray-400 text-sm mb-3">No servers yet.</p>
             <button 
               @click="router.push('/servers-add')"
-              class="px-6 py-3 border-2 border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white rounded-lg transition-colors duration-200 font-semibold flex items-center justify-center mx-auto"
+              class="btn-md btn btn-secondary mx-auto"
             >
               <Icon icon="heroicons:plus-20-solid" class="w-5 h-5 mr-2" />
               Add Server
@@ -92,7 +92,7 @@
                   v-model="editedGreeting.days[day.key]"
                   class="w-4 h-4 text-dark-slate-gray bg-gray-700 border-gray-600 rounded focus:ring-dark-slate-gray"
                 />
-                <span class="text-gray-200">{{ day.label }}</span>
+                <span class="text-gray-200">{{ day.labelFull }}</span>
               </label>
             </div>
           </div>
@@ -103,7 +103,7 @@
       <div class="flex gap-3 mt-6 justify-end">
         <button 
           @click="goToList" 
-          class="px-8 py-4 border-2 border-gray-500 rounded-lg cursor-pointer text-lg transition-colors duration-200 text-gray-300 hover:bg-gray-600 flex items-center justify-center"
+          class="btn-cancel"
         >
           <Icon icon="heroicons:x-mark-20-solid" class="w-6 h-6 mr-2" />
           Cancel
@@ -112,7 +112,7 @@
         <button 
           @click="saveGreeting" 
           :disabled="!editedGreeting.text.trim() || editedGreeting.serverIds.length === 0"
-          class="px-8 py-4 border-2 border-green-500 rounded-lg cursor-pointer text-lg transition-colors duration-200 text-green-500 flex items-center justify-center hover:bg-green-500 hover:text-white disabled:opacity-50 disabled:cursor-not-allowed"
+          class="btn-action-primary disabled:opacity-50 disabled:cursor-not-allowed"
         >
           <Icon icon="heroicons:arrow-down-tray-20-solid" class="w-6 h-6 mr-2" />
           {{ isEditing ? 'Save Changes' : 'Create Greeting' }}
@@ -123,9 +123,10 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, computed } from 'vue';
+import { ref, onMounted, computed, watch } from 'vue';
 import { Icon } from '@iconify/vue';
 import { useGreetingsData, type Greeting } from '~/composables/useGreetingsData';
+import { WEEKDAYS, DEFAULT_DAYS } from '~/constants';
 
 const { greetings, servers, saveToLocalStorage, loadFromLocalStorage } = useGreetingsData();
 const router = useRouter();
@@ -136,27 +137,11 @@ const editingIndex = ref(-1);
 
 const editedGreeting = ref<Greeting>({
   text: '',
-  days: {
-    monday: true,
-    tuesday: true,
-    wednesday: true,
-    thursday: true,
-    friday: true,
-    saturday: true,
-    sunday: true
-  },
+  days: { ...DEFAULT_DAYS },
   serverIds: ['all']
 });
 
-const daysOfWeek = [
-  { key: 'monday' as const, label: 'Monday' },
-  { key: 'tuesday' as const, label: 'Tuesday' },
-  { key: 'wednesday' as const, label: 'Wednesday' },
-  { key: 'thursday' as const, label: 'Thursday' },
-  { key: 'friday' as const, label: 'Friday' },
-  { key: 'saturday' as const, label: 'Saturday' },
-  { key: 'sunday' as const, label: 'Sunday' }
-];
+const daysOfWeek = WEEKDAYS;
 
 const isAllServersSelected = computed(() => {
   return editedGreeting.value.serverIds.includes('all');

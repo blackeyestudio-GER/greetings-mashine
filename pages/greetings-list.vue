@@ -4,7 +4,7 @@
       <div class="flex justify-end items-center mb-5 pb-3 border-b border-gray-600">
         <button 
           @click="goToAddGreeting" 
-          class="p-3 border-2 border-green-500 text-green-500 hover:bg-green-500 hover:text-white rounded-lg transition-colors duration-200"
+          class="btn-add"
           title="New Greeting"
         >
           <Icon icon="heroicons:plus-20-solid" class="w-6 h-6" />
@@ -15,7 +15,7 @@
         <p class="mb-4">No greetings yet.</p>
         <button 
           @click="goToAddGreeting"
-          class="px-8 py-4 border-2 border-green-500 text-green-500 hover:bg-green-500 hover:text-white text-lg rounded-lg transition-colors duration-200 font-semibold flex items-center justify-center mx-auto"
+          class="btn-action-primary mx-auto"
         >
           <Icon icon="heroicons:plus-20-solid" class="w-6 h-6 mr-2" />
           Create First Greeting
@@ -47,7 +47,7 @@
                       : 'bg-transparent border border-gray-600 text-gray-200 opacity-40'"
                     class="px-2 py-1 rounded text-xs"
                   >
-                    {{ day.label }}
+                    {{ day.labelShort }}
                   </span>
                 </div>
                 
@@ -55,7 +55,7 @@
                 <div class="flex flex-col gap-1">
                   <span 
                     v-if="greeting.serverIds.includes('all')" 
-                    class="bg-green-600 px-2 py-1 rounded flex items-center gap-1 text-xs text-white w-fit"
+                    class="bg-dark-slate-gray px-2 py-1 rounded flex items-center gap-1 text-xs text-gray-200 w-fit"
                   >
                     <Icon icon="heroicons:check-20-solid" class="w-3 h-3" />
                     All Servers
@@ -64,7 +64,8 @@
                     v-else
                     v-for="serverId in greeting.serverIds" 
                     :key="serverId" 
-                    class="bg-blue-600 px-2 py-1 rounded flex items-center gap-1 text-xs text-white w-fit"
+                    class="px-2 py-1 rounded flex items-center gap-1 text-xs w-fit"
+                    style="background-color: var(--color-info); color: var(--color-text-secondary);"
                   >
                     <Icon icon="heroicons:server-20-solid" class="w-3 h-3" />
                     {{ getServerName(serverId) }}
@@ -74,20 +75,20 @@
               
               <!-- Action buttons -->
               <div class="flex gap-2">
-                <button 
-                  @click="editGreeting(index)" 
-                  class="p-3 border-2 border-yellow-500 text-yellow-500 hover:bg-yellow-500 hover:text-white rounded-lg transition-colors duration-200"
-                  title="Edit"
-                >
-                  <Icon icon="heroicons:pencil-20-solid" class="w-6 h-6" />
-                </button>
-                <button 
-                  @click="deleteGreeting(index)" 
-                  class="p-3 border-2 border-red-500 text-red-500 hover:bg-red-500 hover:text-white rounded-lg transition-colors duration-200"
-                  title="Delete"
-                >
-                  <Icon icon="heroicons:trash-20-solid" class="w-6 h-6" />
-                </button>
+                    <button 
+                      @click="editGreeting(index)" 
+                      class="btn-edit"
+                      title="Edit"
+                    >
+                      <Icon icon="heroicons:pencil-20-solid" class="w-6 h-6" />
+                    </button>
+                    <button 
+                      @click="deleteGreeting(index)" 
+                      class="btn-delete"
+                      title="Delete"
+                    >
+                      <Icon icon="heroicons:trash-20-solid" class="w-6 h-6" />
+                    </button>
               </div>
             </div>
           </div>
@@ -101,6 +102,7 @@
 import { onMounted } from 'vue';
 import { Icon } from '@iconify/vue';
 import { useGreetingsData, type Greeting } from '~/composables/useGreetingsData';
+import { WEEKDAYS } from '~/constants';
 
 const { greetings, servers, saveToLocalStorage, loadFromLocalStorage } = useGreetingsData();
 const router = useRouter();
@@ -109,15 +111,7 @@ onMounted(() => {
   loadFromLocalStorage();
 });
 
-const allDays = [
-  { key: 'monday', label: 'Mo' },
-  { key: 'tuesday', label: 'Tu' },
-  { key: 'wednesday', label: 'We' },
-  { key: 'thursday', label: 'Th' },
-  { key: 'friday', label: 'Fr' },
-  { key: 'saturday', label: 'Sa' },
-  { key: 'sunday', label: 'Su' }
-];
+const allDays = WEEKDAYS;
 
 const getServerName = (serverId: string): string => {
   const server = servers.value.find(s => s.id === serverId);

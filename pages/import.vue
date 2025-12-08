@@ -2,19 +2,19 @@
   <div class="p-5 bg-eerie-black rounded-lg text-gray-100">
     <section class="bg-gray-700 p-6 rounded-lg shadow-md max-w-lg mx-auto">
       <div class="flex flex-col gap-4">
-        <label for="importServers" class="w-full px-8 py-5 border-2 border-orange-500 rounded-lg cursor-pointer text-xl transition-colors duration-200 text-orange-500 flex items-center justify-center hover:bg-orange-500 hover:text-white font-semibold">
+        <label for="importServers" class="btn-import">
           <Icon icon="heroicons:server-20-solid" class="w-8 h-8 mr-3" />
           Servers
         </label>
         <input type="file" id="importServers" @change="(e) => importData(e, 'servers')" accept=".json" class="hidden"/>
 
-        <label for="importGreetings" class="w-full px-8 py-5 border-2 border-orange-500 rounded-lg cursor-pointer text-xl transition-colors duration-200 text-orange-500 flex items-center justify-center hover:bg-orange-500 hover:text-white font-semibold">
+        <label for="importGreetings" class="btn-import">
           <Icon icon="heroicons:chat-bubble-left-ellipsis-20-solid" class="w-8 h-8 mr-3" />
           Greetings
         </label>
         <input type="file" id="importGreetings" @change="(e) => importData(e, 'greetings')" accept=".json" class="hidden"/>
 
-        <label for="importAll" class="w-full px-8 py-5 border-2 border-purple-500 rounded-lg cursor-pointer text-xl transition-colors duration-200 text-purple-500 flex items-center justify-center hover:bg-purple-500 hover:text-white font-semibold">
+        <label for="importAll" class="btn-import-all">
           <Icon icon="heroicons:arrow-up-tray-20-solid" class="w-8 h-8 mr-3" />
           Everything
         </label>
