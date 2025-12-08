@@ -19,6 +19,7 @@
     "vue": "latest"
   },
   "devDependencies": {
+    "@iconify/vue": "^5.0.0",
     "@vite-pwa/nuxt": "^1.0.7"
   }
 }

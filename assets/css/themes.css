@@ -1,0 +1,363 @@
+/* Default Theme (Dark - Ocean & Teal) */
+:root,
+[data-theme="default"] {
+  --color-primary: #3AA1BD;
+  --color-secondary: #869698;
+  --color-bg-primary: #111212;
+  --color-bg-secondary: #1C1E1E;
+  --color-bg-tertiary: #1E4545;
+  --color-text-primary: #869698;
+  --color-text-secondary: #FFFFFF;
+  --color-text-muted: #6B7280;
+  --color-border: #374151;
+  --color-hover: #1F2937;
+}
+
+/* Light Theme (Bright & Clean) */
+[data-theme="light"] {
+  --color-primary: #2563EB;
+  --color-secondary: #6B7280;
+  --color-bg-primary: #FFFFFF;
+  --color-bg-secondary: #F3F4F6;
+  --color-bg-tertiary: #E5E7EB;
+  --color-text-primary: #1F2937;
+  --color-text-secondary: #111827;
+  --color-text-muted: #6B7280;
+  --color-border: #D1D5DB;
+  --color-hover: #F9FAFB;
+}
+
+/* Darcula Theme (JetBrains Classic) */
+[data-theme="darcula"] {
+  --color-primary: #CC7832;
+  --color-secondary: #A9B7C6;
+  --color-bg-primary: #2B2B2B;
+  --color-bg-secondary: #3C3F41;
+  --color-bg-tertiary: #313335;
+  --color-text-primary: #A9B7C6;
+  --color-text-secondary: #BBBBBB;
+  --color-text-muted: #808080;
+  --color-border: #555555;
+  --color-hover: #4B4F54;
+}
+
+/* Coffee Theme (Warm & Cozy) */
+[data-theme="coffee"] {
+  --color-primary: #8B4513;
+  --color-secondary: #D2691E;
+  --color-bg-primary: #3E2723;
+  --color-bg-secondary: #4E342E;
+  --color-bg-tertiary: #5D4037;
+  --color-text-primary: #D7CCC8;
+  --color-text-secondary: #EFEBE9;
+  --color-text-muted: #A1887F;
+  --color-border: #6D4C41;
+  --color-hover: #795548;
+}
+
+/* Christmas Theme (Red & Green) */
+[data-theme="christmas"] {
+  --color-primary: #C41E3A;
+  --color-secondary: #165B33;
+  --color-bg-primary: #0F5132;
+  --color-bg-secondary: #1B4332;
+  --color-bg-tertiary: #2D6A4F;
+  --color-text-primary: #D8F3DC;
+  --color-text-secondary: #F1FAEE;
+  --color-text-muted: #95D5B2;
+  --color-border: #40916C;
+  --color-hover: #52B788;
+}
+
+/* Halloween Theme (Spooky Orange & Purple) */
+[data-theme="halloween"] {
+  --color-primary: #FF6600;
+  --color-secondary: #9B59B6;
+  --color-bg-primary: #1A0B2E;
+  --color-bg-secondary: #2E1437;
+  --color-bg-tertiary: #3E2347;
+  --color-text-primary: #D4A5D4;
+  --color-text-secondary: #E8C4E8;
+  --color-text-muted: #B388EB;
+  --color-border: #5E2E5E;
+  --color-hover: #6D3A6D;
+}
+
+/* Valentine Theme (Pink & Romance) */
+[data-theme="valentine"] {
+  --color-primary: #FF1493;
+  --color-secondary: #FF69B4;
+  --color-bg-primary: #4A1942;
+  --color-bg-secondary: #5E2750;
+  --color-bg-tertiary: #723862;
+  --color-text-primary: #FFC0CB;
+  --color-text-secondary: #FFE4E1;
+  --color-text-muted: #FF94C8;
+  --color-border: #8B4789;
+  --color-hover: #A05AA0;
+}
+
+/* St. Patrick Theme (Lucky Green) */
+[data-theme="stpatrick"] {
+  --color-primary: #00A86B;
+  --color-secondary: #50C878;
+  --color-bg-primary: #0B6623;
+  --color-bg-secondary: #1B7C2F;
+  --color-bg-tertiary: #2E8B3A;
+  --color-text-primary: #90EE90;
+  --color-text-secondary: #E0FFE0;
+  --color-text-muted: #7CFC00;
+  --color-border: #3CB371;
+  --color-hover: #4CBB17;
+}
+
+/* Easter Theme (Pastel Spring) */
+[data-theme="easter"] {
+  --color-primary: #DA70D6;
+  --color-secondary: #FFD700;
+  --color-bg-primary: #F0E68C;
+  --color-bg-secondary: #E6D7B8;
+  --color-bg-tertiary: #D4C5A9;
+  --color-text-primary: #5D4037;
+  --color-text-secondary: #3E2723;
+  --color-text-muted: #8D6E63;
+  --color-border: #C4B5A0;
+  --color-hover: #D7C8B8;
+}
+
+/* New Year Theme (Gold & Midnight) */
+[data-theme="newyear"] {
+  --color-primary: #FFD700;
+  --color-secondary: #C0C0C0;
+  --color-bg-primary: #191970;
+  --color-bg-secondary: #1E3A5F;
+  --color-bg-tertiary: #4169E1;
+  --color-text-primary: #E6E6FA;
+  --color-text-secondary: #FFFAF0;
+  --color-text-muted: #B0C4DE;
+  --color-border: #4682B4;
+  --color-hover: #5A8FD1;
+}
+
+/* Windows Theme (Microsoft Classic) */
+[data-theme="windows"] {
+  --color-primary: #0078D4;
+  --color-secondary: #50E6FF;
+  --color-bg-primary: #171717;
+  --color-bg-secondary: #2D2D2D;
+  --color-bg-tertiary: #3D3D3D;
+  --color-text-primary: #E8E8E8;
+  --color-text-secondary: #FFFFFF;
+  --color-text-muted: #B3B3B3;
+  --color-border: #505050;
+  --color-hover: #4D4D4D;
+}
+
+/* macOS Theme (Apple Aqua) */
+[data-theme="macos"] {
+  --color-primary: #007AFF;
+  --color-secondary: #E5E5EA;
+  --color-bg-primary: #1C1C1E;
+  --color-bg-secondary: #2C2C2E;
+  --color-bg-tertiary: #3A3A3C;
+  --color-text-primary: #E5E5EA;
+  --color-text-secondary: #FFFFFF;
+  --color-text-muted: #8E8E93;
+  --color-border: #48484A;
+  --color-hover: #505052;
+}
+
+/* Simpsons Theme (Springfield Yellow) */
+[data-theme="simpsons"] {
+  --color-primary: #FFD90F;
+  --color-secondary: #2E8BC0;
+  --color-bg-primary: #062130;
+  --color-bg-secondary: #0D2C40;
+  --color-bg-tertiary: #1B4965;
+  --color-text-primary: #FFD90F;
+  --color-text-secondary: #FFFFFF;
+  --color-text-muted: #8BB4D4;
+  --color-border: #2E8BC0;
+  --color-hover: #1B4965;
+}
+
+/* Super Mario Theme (Mushroom Kingdom) */
+[data-theme="mario"] {
+  --color-primary: #E52521;
+  --color-secondary: #00A550;
+  --color-bg-primary: #1A1A1A;
+  --color-bg-secondary: #003F91;
+  --color-bg-tertiary: #049CD8;
+  --color-text-primary: #FFFFFF;
+  --color-text-secondary: #FFD700;
+  --color-text-muted: #A0A0A0;
+  --color-border: #E52521;
+  --color-hover: #003F91;
+}
+
+/* Yoshi Theme (Dinosaur Green) */
+[data-theme="yoshi"] {
+  --color-primary: #4BB74C;
+  --color-secondary: #7ED957;
+  --color-bg-primary: #FFFFFF;
+  --color-bg-secondary: #E8E8E8;
+  --color-bg-tertiary: #C0C0C0;
+  --color-text-primary: #2D5016;
+  --color-text-secondary: #1A3009;
+  --color-text-muted: #5A5A5A;
+  --color-border: #7ED957;
+  --color-hover: #D8D8D8;
+}
+
+/* Pac-Man Theme (Arcade Classic) */
+[data-theme="pacman"] {
+  --color-primary: #FFFF00;
+  --color-secondary: #00FFFF;
+  --color-bg-primary: #000000;
+  --color-bg-secondary: #2121DE;
+  --color-bg-tertiary: #1A1A8E;
+  --color-text-primary: #FFFF00;
+  --color-text-secondary: #FFFFFF;
+  --color-text-muted: #00FFFF;
+  --color-border: #FF0000;
+  --color-hover: #2121DE;
+}
+
+/* SNES Theme (Super Nintendo) */
+[data-theme="snes"] {
+  --color-primary: #8A61C1;
+  --color-secondary: #B39ADB;
+  --color-bg-primary: #2E2E2E;
+  --color-bg-secondary: #5A5A5A;
+  --color-bg-tertiary: #C1C1C1;
+  --color-text-primary: #E8E8E8;
+  --color-text-secondary: #FFFFFF;
+  --color-text-muted: #B39ADB;
+  --color-border: #8A61C1;
+  --color-hover: #6A6A6A;
+}
+
+/* Famicom Theme (Nintendo Red & White) */
+[data-theme="famicom"] {
+  --color-primary: #D8232A;
+  --color-secondary: #8B1C1C;
+  --color-bg-primary: #FFFFFF;
+  --color-bg-secondary: #E0E0E0;
+  --color-bg-tertiary: #FFF5E0;
+  --color-text-primary: #D8232A;
+  --color-text-secondary: #8B1C1C;
+  --color-text-muted: #666666;
+  --color-border: #D8232A;
+  --color-hover: #F5F5F5;
+}
+
+/* Atari Theme (Rainbow Classic) */
+[data-theme="atari"] {
+  --color-primary: #FF6600;
+  --color-secondary: #FFD700;
+  --color-bg-primary: #000000;
+  --color-bg-secondary: #1A1A1A;
+  --color-bg-tertiary: #333333;
+  --color-text-primary: #FF6600;
+  --color-text-secondary: #FFD700;
+  --color-text-muted: #DC143C;
+  --color-border: #FF6600;
+  --color-hover: #2A2A2A;
+}
+
+/* Xbox Theme (Microsoft Gaming) */
+[data-theme="xbox"] {
+  --color-primary: #107C10;
+  --color-secondary: #80C342;
+  --color-bg-primary: #0E0E0E;
+  --color-bg-secondary: #1E1E1E;
+  --color-bg-tertiary: #2D2D2D;
+  --color-text-primary: #FFFFFF;
+  --color-text-secondary: #80C342;
+  --color-text-muted: #B8B8B8;
+  --color-border: #107C10;
+  --color-hover: #3A3A3A;
+}
+
+/* PlayStation Theme (Sony Blue) */
+[data-theme="playstation"] {
+  --color-primary: #003087;
+  --color-secondary: #0070CC;
+  --color-bg-primary: #000000;
+  --color-bg-secondary: #E8E8E8;
+  --color-bg-tertiary: #FFFFFF;
+  --color-text-primary: #003087;
+  --color-text-secondary: #000000;
+  --color-text-muted: #666666;
+  --color-border: #0070CC;
+  --color-hover: #F5F5F5;
+}
+
+/* Apply theme colors */
+body {
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
+}
+
+/* Override Tailwind classes with CSS variables */
+.bg-night {
+  background-color: var(--color-bg-primary) !important;
+}
+
+.bg-eerie-black {
+  background-color: var(--color-bg-secondary) !important;
+}
+
+.bg-dark-slate-gray {
+  background-color: var(--color-bg-tertiary) !important;
+}
+
+.bg-gray-700 {
+  background-color: var(--color-bg-secondary) !important;
+}
+
+.bg-gray-600 {
+  background-color: var(--color-bg-tertiary) !important;
+}
+
+.text-dim-gray {
+  color: var(--color-text-primary) !important;
+}
+
+.text-gray-200,
+.text-gray-100 {
+  color: var(--color-text-secondary) !important;
+}
+
+.text-gray-300,
+.text-gray-400 {
+  color: var(--color-text-muted) !important;
+}
+
+.text-moonstone {
+  color: var(--color-primary) !important;
+}
+
+.border-gray-600,
+.border-gray-700 {
+  border-color: var(--color-border) !important;
+}
+
+.hover\:bg-gray-600:hover,
+.hover\:bg-gray-700:hover {
+  background-color: var(--color-hover) !important;
+}
+
+/* Ensure proper text contrast in light mode */
+[data-theme="light"] .text-white {
+  color: var(--color-text-secondary) !important;
+}
+
+[data-theme="light"] .bg-night {
+  background-color: var(--color-bg-primary) !important;
+}
+
+[data-theme="light"] .bg-eerie-black {
+  background-color: var(--color-bg-secondary) !important;
+}
+
