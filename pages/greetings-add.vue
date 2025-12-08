@@ -1,19 +1,5 @@
 <template>
   <div class="p-5 bg-eerie-black rounded-lg text-gray-100">
-    <div class="flex items-center mb-6">
-      <button 
-        @click="goToList" 
-        class="mr-4 p-2 text-gray-400 hover:text-gray-200 transition-colors"
-      >
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
-        </svg>
-      </button>
-      <h1 class="text-dark-slate-gray text-3xl font-bold">
-        {{ isEditing ? 'Edit Greeting' : 'New Greeting' }}
-      </h1>
-    </div>
-
     <section class="bg-gray-700 p-5 rounded-lg shadow-md mb-6">
       <!-- Message -->
       <div class="mb-5">
@@ -31,8 +17,15 @@
         <div class="flex-1 bg-night p-4 rounded-md">
           <h3 class="text-gray-300 mb-3 font-semibold">Available for Servers:</h3>
           
-          <div v-if="servers.length === 0" class="text-gray-400 text-sm">
-            <p>No servers yet. <NuxtLink to="/servers-add" class="text-moonstone hover:underline">Add a server now</NuxtLink></p>
+          <div v-if="servers.length === 0" class="text-center py-4">
+            <p class="text-gray-400 text-sm mb-3">No servers yet.</p>
+            <button 
+              @click="router.push('/servers-add')"
+              class="px-6 py-3 border-2 border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white rounded-lg transition-colors duration-200 font-semibold flex items-center justify-center mx-auto"
+            >
+              <Icon icon="heroicons:plus-20-solid" class="w-5 h-5 mr-2" />
+              Add Server
+            </button>
           </div>
           
           <div v-else class="space-y-2">
@@ -67,9 +60,7 @@
                     <img :src="server.icon" alt="" class="w-full h-full object-cover" />
                   </div>
                   <div v-else class="w-6 h-6 rounded-full bg-gray-600 flex items-center justify-center flex-shrink-0">
-                    <svg class="w-3 h-3 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"></path>
-                    </svg>
+                    <Icon icon="heroicons:server-20-solid" class="w-3 h-3 text-gray-400" />
                   </div>
                   <span class="text-gray-200 text-sm">{{ server.name }}</span>
                 </div>
@@ -81,15 +72,29 @@
         <!-- Right side: Days of week selection -->
         <div class="flex-1 bg-night p-4 rounded-md">
           <h3 class="text-gray-300 mb-3 font-semibold">Available Days:</h3>
-          <div class="flex flex-col gap-1">
-            <label v-for="day in daysOfWeek" :key="day.key" class="flex items-center gap-2 cursor-pointer hover:bg-gray-600 p-2 rounded transition-colors">
+          <div class="flex flex-col gap-2">
+            <!-- Everyday Option -->
+            <label class="flex items-center gap-2 cursor-pointer hover:bg-gray-600 p-2 rounded transition-colors border border-gray-500">
               <input 
                 type="checkbox" 
-                v-model="editedGreeting.days[day.key]"
+                :checked="isAllDaysSelected"
+                @change="toggleAllDays"
                 class="w-4 h-4 text-dark-slate-gray bg-gray-700 border-gray-600 rounded focus:ring-dark-slate-gray"
               />
-              <span class="text-gray-200">{{ day.label }}</span>
+              <span class="text-gray-200 font-semibold">Everyday</span>
             </label>
+            
+            <!-- Individual Days -->
+            <div class="flex flex-col gap-1">
+              <label v-for="day in daysOfWeek" :key="day.key" class="flex items-center gap-2 cursor-pointer hover:bg-gray-600 p-2 rounded transition-colors">
+                <input 
+                  type="checkbox" 
+                  v-model="editedGreeting.days[day.key]"
+                  class="w-4 h-4 text-dark-slate-gray bg-gray-700 border-gray-600 rounded focus:ring-dark-slate-gray"
+                />
+                <span class="text-gray-200">{{ day.label }}</span>
+              </label>
+            </div>
           </div>
         </div>
       </div>
@@ -98,8 +103,9 @@
       <div class="flex gap-3 mt-6 justify-end">
         <button 
           @click="goToList" 
-          class="px-8 py-4 border-2 border-gray-500 rounded-lg cursor-pointer text-lg transition-colors duration-200 text-gray-300 hover:bg-gray-600"
+          class="px-8 py-4 border-2 border-gray-500 rounded-lg cursor-pointer text-lg transition-colors duration-200 text-gray-300 hover:bg-gray-600 flex items-center justify-center"
         >
+          <Icon icon="heroicons:x-mark-20-solid" class="w-6 h-6 mr-2" />
           Cancel
         </button>
         
@@ -108,9 +114,7 @@
           :disabled="!editedGreeting.text.trim() || editedGreeting.serverIds.length === 0"
           class="px-8 py-4 border-2 border-green-500 rounded-lg cursor-pointer text-lg transition-colors duration-200 text-green-500 flex items-center justify-center hover:bg-green-500 hover:text-white disabled:opacity-50 disabled:cursor-not-allowed"
         >
-          <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-          </svg>
+          <Icon icon="heroicons:arrow-down-tray-20-solid" class="w-6 h-6 mr-2" />
           {{ isEditing ? 'Save Changes' : 'Create Greeting' }}
         </button>
       </div>
@@ -120,6 +124,7 @@
 
 <script setup lang="ts">
 import { ref, onMounted, computed } from 'vue';
+import { Icon } from '@iconify/vue';
 import { useGreetingsData, type Greeting } from '~/composables/useGreetingsData';
 
 const { greetings, servers, saveToLocalStorage, loadFromLocalStorage } = useGreetingsData();
@@ -164,6 +169,17 @@ const toggleAllServers = (event: Event) => {
   } else {
     editedGreeting.value.serverIds = [];
   }
+};
+
+const isAllDaysSelected = computed(() => {
+  return Object.values(editedGreeting.value.days).every(day => day === true);
+});
+
+const toggleAllDays = (event: Event) => {
+  const checked = (event.target as HTMLInputElement).checked;
+  daysOfWeek.forEach(day => {
+    editedGreeting.value.days[day.key] = checked;
+  });
 };
 
 onMounted(() => {

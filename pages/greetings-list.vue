@@ -7,9 +7,7 @@
           class="p-3 border-2 border-green-500 text-green-500 hover:bg-green-500 hover:text-white rounded-lg transition-colors duration-200"
           title="New Greeting"
         >
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
-          </svg>
+          <Icon icon="heroicons:plus-20-solid" class="w-6 h-6" />
         </button>
       </div>
 
@@ -17,9 +15,10 @@
         <p class="mb-4">No greetings yet.</p>
         <button 
           @click="goToAddGreeting"
-          class="px-6 py-3 bg-green-500 hover:bg-green-600 text-white rounded-md transition-colors duration-200"
+          class="px-8 py-4 border-2 border-green-500 text-green-500 hover:bg-green-500 hover:text-white text-lg rounded-lg transition-colors duration-200 font-semibold flex items-center justify-center mx-auto"
         >
-          Create your first greeting
+          <Icon icon="heroicons:plus-20-solid" class="w-6 h-6 mr-2" />
+          Create First Greeting
         </button>
       </div>
 
@@ -40,8 +39,15 @@
               <div class="flex flex-col gap-1.5">
                 <!-- Days -->
                 <div class="flex flex-wrap gap-1">
-                  <span v-for="day in getActiveDays(greeting)" :key="day" class="bg-gray-600 px-2 py-1 rounded text-xs text-gray-300">
-                    {{ day }}
+                  <span 
+                    v-for="day in allDays" 
+                    :key="day.key" 
+                    :class="greeting.days[day.key] 
+                      ? 'bg-gray-600 text-gray-200' 
+                      : 'bg-transparent border border-gray-600 text-gray-200 opacity-40'"
+                    class="px-2 py-1 rounded text-xs"
+                  >
+                    {{ day.label }}
                   </span>
                 </div>
                 
@@ -51,9 +57,7 @@
                     v-if="greeting.serverIds.includes('all')" 
                     class="bg-green-600 px-2 py-1 rounded flex items-center gap-1 text-xs text-white w-fit"
                   >
-                    <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                    </svg>
+                    <Icon icon="heroicons:check-20-solid" class="w-3 h-3" />
                     All Servers
                   </span>
                   <span 
@@ -62,9 +66,7 @@
                     :key="serverId" 
                     class="bg-blue-600 px-2 py-1 rounded flex items-center gap-1 text-xs text-white w-fit"
                   >
-                    <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"></path>
-                    </svg>
+                    <Icon icon="heroicons:server-20-solid" class="w-3 h-3" />
                     {{ getServerName(serverId) }}
                   </span>
                 </div>
@@ -77,18 +79,14 @@
                   class="p-3 border-2 border-yellow-500 text-yellow-500 hover:bg-yellow-500 hover:text-white rounded-lg transition-colors duration-200"
                   title="Edit"
                 >
-                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path>
-                  </svg>
+                  <Icon icon="heroicons:pencil-20-solid" class="w-6 h-6" />
                 </button>
                 <button 
                   @click="deleteGreeting(index)" 
                   class="p-3 border-2 border-red-500 text-red-500 hover:bg-red-500 hover:text-white rounded-lg transition-colors duration-200"
                   title="Delete"
                 >
-                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
-                  </svg>
+                  <Icon icon="heroicons:trash-20-solid" class="w-6 h-6" />
                 </button>
               </div>
             </div>
@@ -101,6 +99,7 @@
 
 <script setup lang="ts">
 import { onMounted } from 'vue';
+import { Icon } from '@iconify/vue';
 import { useGreetingsData, type Greeting } from '~/composables/useGreetingsData';
 
 const { greetings, servers, saveToLocalStorage, loadFromLocalStorage } = useGreetingsData();
@@ -110,21 +109,15 @@ onMounted(() => {
   loadFromLocalStorage();
 });
 
-const daysLabels: Record<string, string> = {
-  monday: 'Mo',
-  tuesday: 'Di',
-  wednesday: 'Mi',
-  thursday: 'Do',
-  friday: 'Fr',
-  saturday: 'Sa',
-  sunday: 'So'
-};
-
-const getActiveDays = (greeting: Greeting): string[] => {
-  return Object.entries(greeting.days)
-    .filter(([_, active]) => active)
-    .map(([day, _]) => daysLabels[day]);
-};
+const allDays = [
+  { key: 'monday', label: 'Mo' },
+  { key: 'tuesday', label: 'Tu' },
+  { key: 'wednesday', label: 'We' },
+  { key: 'thursday', label: 'Th' },
+  { key: 'friday', label: 'Fr' },
+  { key: 'saturday', label: 'Sa' },
+  { key: 'sunday', label: 'Su' }
+];
 
 const getServerName = (serverId: string): string => {
   const server = servers.value.find(s => s.id === serverId);

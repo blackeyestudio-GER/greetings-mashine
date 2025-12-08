@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { onMounted, computed } from 'vue';
+import { Icon } from '@iconify/vue';
 import { useGreetingsData, type Greeting } from '~/composables/useGreetingsData';
 
 const { 
@@ -58,9 +59,7 @@ const hasContent = computed(() => servers.value.length > 0 || greetings.value.le
     <!-- Empty state with explanation -->
     <div v-if="!hasContent" class="p-8 bg-eerie-black rounded-lg shadow-md text-center">
       <div class="max-w-2xl mx-auto">
-        <svg class="w-24 h-24 mx-auto mb-6 text-moonstone" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
-        </svg>
+        <Icon icon="heroicons:chat-bubble-left-ellipsis-20-solid" class="w-24 h-24 mx-auto mb-6 text-moonstone" />
         
         <h2 class="text-2xl font-bold text-gray-100 mb-4">Welcome to the Greetings Machine!</h2>
         
@@ -80,15 +79,17 @@ const hasContent = computed(() => servers.value.length > 0 || greetings.value.le
           <div class="flex gap-4 justify-center mt-6">
             <button 
               @click="router.push('/greetings-add')" 
-              class="px-6 py-3 bg-green-500 hover:bg-green-600 text-white rounded-md transition-colors duration-200 font-semibold"
+              class="px-8 py-4 border-2 border-green-500 text-green-500 hover:bg-green-500 hover:text-white text-lg rounded-lg transition-colors duration-200 font-semibold flex items-center justify-center"
             >
-              Erste Begrüßung erstellen
+              <Icon icon="heroicons:plus-20-solid" class="w-7 h-7 mr-2" />
+              Create First Greeting
             </button>
             <button 
               @click="router.push('/servers-add')" 
-              class="px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white rounded-md transition-colors duration-200 font-semibold"
+              class="px-8 py-4 border-2 border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white text-lg rounded-lg transition-colors duration-200 font-semibold flex items-center justify-center"
             >
-              Ersten Server hinzufügen
+              <Icon icon="heroicons:plus-20-solid" class="w-7 h-7 mr-2" />
+              Add First Server
             </button>
           </div>
         </div>
@@ -102,8 +103,9 @@ const hasContent = computed(() => servers.value.length > 0 || greetings.value.le
         <p class="text-gray-300 mb-4">No servers added yet.</p>
         <button 
           @click="router.push('/servers-add')" 
-          class="px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white rounded-md transition-colors duration-200"
+          class="px-8 py-4 border-2 border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white text-lg rounded-lg transition-colors duration-200 font-semibold flex items-center justify-center mx-auto"
         >
+          <Icon icon="heroicons:plus-20-solid" class="w-6 h-6 mr-2" />
           Add Server
         </button>
       </div>
@@ -113,8 +115,9 @@ const hasContent = computed(() => servers.value.length > 0 || greetings.value.le
         <p class="text-gray-300 mb-4">No greetings created yet.</p>
         <button 
           @click="router.push('/greetings-add')" 
-          class="px-6 py-3 bg-green-500 hover:bg-green-600 text-white rounded-md transition-colors duration-200"
+          class="px-8 py-4 border-2 border-green-500 text-green-500 hover:bg-green-500 hover:text-white text-lg rounded-lg transition-colors duration-200 font-semibold flex items-center justify-center mx-auto"
         >
+          <Icon icon="heroicons:plus-20-solid" class="w-6 h-6 mr-2" />
           Create Greeting
         </button>
       </div>
@@ -142,9 +145,7 @@ const hasContent = computed(() => servers.value.length > 0 || greetings.value.le
                 <img :src="server.icon" alt="Server Icon" class="w-full h-full object-cover" />
               </div>
               <div v-else class="w-12 h-12 rounded-full bg-gray-600 flex items-center justify-center flex-shrink-0">
-                <svg class="w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"></path>
-                </svg>
+                <Icon icon="heroicons:server-20-solid" class="w-6 h-6 text-gray-400" />
               </div>
             </div>
             
@@ -171,18 +172,14 @@ const hasContent = computed(() => servers.value.length > 0 || greetings.value.le
                   class="p-3 border-2 border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white rounded-lg transition-colors duration-200"
                   title="Copy & Open"
                 >
-                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
-                  </svg>
+                  <Icon icon="heroicons:document-duplicate-20-solid" class="w-6 h-6" />
                 </button>
                 <button 
                   @click="editGreeting(greetings.indexOf(greeting))" 
                   class="p-3 border-2 border-yellow-500 text-yellow-500 hover:bg-yellow-500 hover:text-white rounded-lg transition-colors duration-200"
                   title="Edit"
                 >
-                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path>
-                  </svg>
+                  <Icon icon="heroicons:pencil-20-solid" class="w-6 h-6" />
                 </button>
               </div>
             </div>
