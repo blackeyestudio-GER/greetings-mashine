@@ -1,10 +1,10 @@
-export const discordChannels = [
+export const servers = [
   {
     name: 'My Awesome Server',
-    url: 'https://discord.com/channels/123456789012345678',
+    url: 'https://example.com/channels/123456789012345678',
   },
   {
     name: 'Another Great Server',
-    url: 'https://discord.com/channels/987654321098765432',
+    url: 'https://example.com/channels/987654321098765432',
   },
 ];

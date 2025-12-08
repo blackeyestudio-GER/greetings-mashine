@@ -24,7 +24,7 @@ export default defineNuxtConfig({
       name: 'Greetings Machine',
       short_name: 'Greetings',
       description: 'Meine personalisierte Grußmaschinen-App',
-      theme_color: '#7289da',
+      theme_color: '#1E4545',
       icons: [
         {
           src: 'pwa-192x192.png',
@@ -79,10 +79,9 @@ export default defineNuxtConfig({
       ],
     },
     injectRegister: 'auto',
-    registerType: 'auto',
+    registerType: 'prompt',
     devOptions: {
       enabled: true,
-      type: 'module',
     },
   },
 })

@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-night min-h-screen">
+  <div class="bg-night min-h-screen" @click="handleOutsideClick">
     <NuxtLoadingIndicator :throttle="0" :height="2" />
     <AppHeader @toggleMenu="isMenuOpen = !isMenuOpen" />
     <FullScreenMenu :isOpen="isMenuOpen" @closeMenu="isMenuOpen = false" />
@@ -11,22 +11,20 @@
 </template>
 
 <script setup lang="ts">
-import { ref, watch } from 'vue';
-import AppHeader from '#/components/AppHeader.vue';
-import FullScreenMenu from '#/components/FullScreenMenu.vue';
+import { ref } from 'vue';
+import AppHeader from '~/components/AppHeader.vue';
+import FullScreenMenu from '~/components/FullScreenMenu.vue';
+import AppFooter from '~/components/AppFooter.vue';
 
 const isMenuOpen = ref(false);
 
-// Verwende Nuxt's useState für den globalen Ansichtsmodus
-const viewMode = useState<'greet' | 'edit-greetings' | 'edit-servers' | 'export'>('viewMode', () => 'greet');
-
-// Wenn das Menü geschlossen wird, und der Viewmode auf export ist, muss das
-// auf greet gewechselt werden, damit die normale Ansicht kommt.
-watch(isMenuOpen, (newValue) => {
-  if (!newValue && viewMode.value === 'export') {
-    viewMode.value = 'greet';
+const handleOutsideClick = (event: MouseEvent) => {
+  const target = event.target as HTMLElement;
+  // Close menu if clicking outside and not on the menu button or dropdown
+  if (isMenuOpen.value && !target.closest('.menu-dropdown') && !target.closest('button')) {
+    isMenuOpen.value = false;
   }
-});
+};
 
 useHead({
   titleTemplate: (title) => title ? `${title} - Greetings Machine` : 'Greetings Machine',
