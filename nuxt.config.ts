@@ -26,6 +26,11 @@ export default defineNuxtConfig({
       short_name: 'HelloBot',
       description: 'Your personal greeting bot for Discord and chat servers',
       theme_color: '#1E4545',
+      background_color: '#0A0E0E',
+      display: 'standalone',
+      orientation: 'portrait',
+      start_url: '/',
+      scope: '/',
       icons: [
         {
           src: 'pwa-192x192.png',

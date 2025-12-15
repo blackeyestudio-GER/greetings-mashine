@@ -7,6 +7,7 @@
       <slot />
     </div>
     <AppFooter />
+    <PwaInstallPrompt />
   </div>
 </template>
 
@@ -15,6 +16,7 @@ import { ref, computed, watch, onMounted } from 'vue';
 import AppHeader from '~/components/AppHeader.vue';
 import FullScreenMenu from '~/components/FullScreenMenu.vue';
 import AppFooter from '~/components/AppFooter.vue';
+import PwaInstallPrompt from '~/components/PwaInstallPrompt.vue';
 import { useUserSettings } from '~/composables/useUserSettings';
 
 const isMenuOpen = ref(false);
