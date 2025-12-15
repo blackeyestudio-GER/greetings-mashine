@@ -1,8 +1,8 @@
 <template>
-  <div class="p-5 bg-eerie-black rounded-lg text-gray-100">
-    <section class="bg-gray-700 p-6 rounded-lg shadow-md">
+  <div class="bg-eerie-black rounded-lg text-gray-100">
+    <section class="bg-gray-700 p-4 md:p-6 rounded-lg shadow-md">
       <!-- Regular Themes Grid -->
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
         <div 
           v-for="theme in themes" 
           :key="theme.id"
@@ -10,16 +10,16 @@
           class="cursor-pointer rounded-lg overflow-hidden transition-all duration-200 hover:scale-105"
           :class="selectedTheme === theme.id ? 'bg-gray-600 ring-2 ring-moonstone' : 'bg-night'"
         >
-          <div class="p-5">
-            <h3 class="text-xl font-bold text-gray-200 mb-1">{{ theme.name }}</h3>
-            <p class="text-sm text-gray-400 mb-4">{{ theme.description }}</p>
+          <div class="p-3 md:p-5">
+            <h3 class="text-lg md:text-xl font-bold text-gray-200 mb-1">{{ theme.name }}</h3>
+            <p class="text-xs md:text-sm text-gray-400 mb-3 md:mb-4">{{ theme.description }}</p>
             
             <!-- Color Stripes -->
-            <div class="space-y-2">
+            <div class="space-y-1.5 md:space-y-2">
               <div 
                 v-for="(color, index) in theme.colors" 
                 :key="index"
-                class="h-8 rounded"
+                class="h-6 md:h-8 rounded"
                 :style="{ backgroundColor: color.hex }"
                 :title="color.name"
               ></div>
@@ -29,18 +29,18 @@
       </div>
 
       <!-- Holiday Specials Divider -->
-      <div class="flex items-center gap-4 my-8">
+      <div class="flex items-center gap-3 md:gap-4 my-6 md:my-8">
         <div class="flex-1 h-px bg-gray-600"></div>
-        <div class="flex items-center gap-2 text-gray-300 font-semibold text-lg">
-          <Icon icon="heroicons:sparkles-20-solid" class="w-6 h-6 text-moonstone" />
+        <div class="flex items-center gap-2 text-gray-300 font-semibold text-base md:text-lg">
+          <Icon icon="heroicons:sparkles-20-solid" class="w-5 h-5 md:w-6 md:h-6 text-moonstone" />
           Holiday Specials
-          <Icon icon="heroicons:sparkles-20-solid" class="w-6 h-6 text-moonstone" />
+          <Icon icon="heroicons:sparkles-20-solid" class="w-5 h-5 md:w-6 md:h-6 text-moonstone" />
         </div>
         <div class="flex-1 h-px bg-gray-600"></div>
       </div>
 
       <!-- Holiday Themes Grid -->
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
         <div 
           v-for="theme in holidayThemes" 
           :key="theme.id"
@@ -48,16 +48,16 @@
           class="cursor-pointer rounded-lg overflow-hidden transition-all duration-200 hover:scale-105"
           :class="selectedTheme === theme.id ? 'bg-gray-600 ring-2 ring-moonstone' : 'bg-night'"
         >
-          <div class="p-5">
-            <h3 class="text-xl font-bold text-gray-200 mb-1">{{ theme.name }}</h3>
-            <p class="text-sm text-gray-400 mb-4">{{ theme.description }}</p>
+          <div class="p-3 md:p-5">
+            <h3 class="text-lg md:text-xl font-bold text-gray-200 mb-1">{{ theme.name }}</h3>
+            <p class="text-xs md:text-sm text-gray-400 mb-3 md:mb-4">{{ theme.description }}</p>
             
             <!-- Color Stripes -->
-            <div class="space-y-2">
+            <div class="space-y-1.5 md:space-y-2">
               <div 
                 v-for="(color, index) in theme.colors" 
                 :key="index"
-                class="h-8 rounded"
+                class="h-6 md:h-8 rounded"
                 :style="{ backgroundColor: color.hex }"
                 :title="color.name"
               ></div>

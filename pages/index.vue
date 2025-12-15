@@ -57,18 +57,18 @@ const hasContent = computed(() => servers.value.length > 0 || greetings.value.le
 <template>
   <div>
     <!-- Empty state with explanation -->
-    <div v-if="!hasContent" class="p-8 bg-eerie-black rounded-lg shadow-md text-center">
-      <div class="max-w-2xl mx-auto">
-        <Icon icon="heroicons:chat-bubble-left-ellipsis-20-solid" class="w-24 h-24 mx-auto mb-6 text-moonstone" />
+    <div v-if="!hasContent" class="p-4 md:p-8 bg-eerie-black rounded-lg shadow-md text-center">
+      <div class="w-full md:max-w-2xl md:mx-auto">
+        <Icon icon="heroicons:chat-bubble-left-ellipsis-20-solid" class="w-16 h-16 md:w-20 md:h-20 mx-auto mb-4 text-moonstone" />
         
-        <h2 class="text-2xl font-bold text-gray-100 mb-4">Welcome to the Greetings Machine!</h2>
+        <h2 class="text-xl md:text-2xl font-bold text-gray-100 mb-3">Welcome to HelloBot!</h2>
         
-        <div class="text-gray-300 space-y-4 text-left">
-          <p class="text-lg">This app helps you manage your chat servers and communities with predefined greetings.</p>
+        <div class="text-gray-300 space-y-3 text-left">
+          <p class="text-sm md:text-base">This app helps you manage your chat servers and communities with predefined greetings.</p>
           
-          <div class="bg-gray-700 p-4 rounded-lg">
-            <h3 class="font-semibold text-moonstone mb-2">How it works:</h3>
-            <ol class="list-decimal list-inside space-y-2 text-sm">
+          <div class="bg-gray-700 p-3 md:p-4 rounded-lg">
+            <h3 class="font-semibold text-moonstone mb-2 text-sm md:text-base">How it works:</h3>
+            <ol class="list-decimal list-inside space-y-1.5 text-xs md:text-sm">
               <li>Create <strong>greetings</strong> with text and select the weekdays they should be available</li>
               <li>Add your <strong>servers</strong> (name, URL and optionally an icon)</li>
               <li>On this main page you'll see 3 random greetings for each server</li>
@@ -76,19 +76,19 @@ const hasContent = computed(() => servers.value.length > 0 || greetings.value.le
             </ol>
           </div>
           
-          <div class="flex gap-4 justify-center mt-6">
+          <div class="flex flex-col sm:flex-row gap-3 justify-center mt-4">
             <button 
               @click="router.push('/greetings-add')" 
               class="btn-action-primary"
             >
-              <Icon icon="heroicons:plus-20-solid" class="w-7 h-7 mr-2" />
+              <Icon icon="heroicons:plus-20-solid" class="w-5 h-5 mr-2" />
               Create First Greeting
             </button>
             <button 
               @click="router.push('/servers-add')" 
               class="btn-action-secondary"
             >
-              <Icon icon="heroicons:plus-20-solid" class="w-7 h-7 mr-2" />
+              <Icon icon="heroicons:plus-20-solid" class="w-5 h-5 mr-2" />
               Add First Server
             </button>
           </div>
@@ -97,27 +97,27 @@ const hasContent = computed(() => servers.value.length > 0 || greetings.value.le
     </div>
 
     <!-- Main content with servers and greetings -->
-    <div v-else class="space-y-6">
+    <div v-else class="space-y-4 md:space-y-6">
       <!-- No servers message -->
-      <div v-if="servers.length === 0" class="p-5 bg-eerie-black rounded-lg shadow-md text-center">
-        <p class="text-gray-300 mb-4">No servers added yet.</p>
+      <div v-if="servers.length === 0" class="p-4 bg-eerie-black rounded-lg shadow-md text-center">
+        <p class="text-gray-300 mb-3 text-sm md:text-base">No servers added yet.</p>
         <button 
           @click="router.push('/servers-add')" 
           class="btn-action-secondary mx-auto"
         >
-          <Icon icon="heroicons:plus-20-solid" class="w-6 h-6 mr-2" />
+          <Icon icon="heroicons:plus-20-solid" class="w-5 h-5 mr-2" />
           Add Server
         </button>
       </div>
 
       <!-- No greetings message -->
-      <div v-if="greetings.length === 0" class="p-5 bg-eerie-black rounded-lg shadow-md text-center">
-        <p class="text-gray-300 mb-4">No greetings created yet.</p>
+      <div v-if="greetings.length === 0" class="p-4 bg-eerie-black rounded-lg shadow-md text-center">
+        <p class="text-gray-300 mb-3 text-sm md:text-base">No greetings created yet.</p>
         <button 
           @click="router.push('/greetings-add')" 
           class="btn-action-primary mx-auto"
         >
-          <Icon icon="heroicons:plus-20-solid" class="w-6 h-6 mr-2" />
+          <Icon icon="heroicons:plus-20-solid" class="w-5 h-5 mr-2" />
           Create Greeting
         </button>
       </div>
@@ -130,56 +130,58 @@ const hasContent = computed(() => servers.value.length > 0 || greetings.value.le
 
       <!-- Server list with greetings -->
       <div v-for="(server, serverIndex) in servers" :key="serverIndex" class="bg-eerie-black rounded-lg shadow-md">
-        <div class="flex items-start gap-4 p-5">
+        <div class="flex flex-col md:flex-row items-start gap-3 md:gap-4 p-3 md:p-5">
           <!-- Left side: Server Info -->
-          <div class="w-1/3 flex flex-col items-start gap-3">
-            <div class="flex items-center gap-3">
+          <div class="w-full md:w-1/3 flex flex-row md:flex-col items-center md:items-start gap-3">
+            <div class="flex items-center gap-2 md:gap-3">
               <input 
                 type="checkbox" 
                 :checked="!!server.lastGreeted" 
                 disabled 
-                class="w-5 h-5 accent-green-500" 
+                class="w-4 h-4 md:w-5 md:h-5 accent-green-500" 
               />
               
-              <div v-if="server.icon" class="w-12 h-12 rounded-full overflow-hidden bg-gray-600 flex-shrink-0">
+              <div v-if="server.icon" class="w-10 h-10 md:w-12 md:h-12 rounded-full overflow-hidden bg-gray-600 flex-shrink-0">
                 <img :src="server.icon" alt="Server Icon" class="w-full h-full object-cover" />
               </div>
-              <div v-else class="w-12 h-12 rounded-full bg-gray-600 flex items-center justify-center flex-shrink-0">
-                <Icon icon="heroicons:server-20-solid" class="w-6 h-6 text-gray-400" />
+              <div v-else class="w-10 h-10 md:w-12 md:h-12 rounded-full bg-gray-600 flex items-center justify-center flex-shrink-0">
+                <Icon icon="heroicons:server-20-solid" class="w-5 h-5 md:w-6 md:h-6 text-gray-400" />
               </div>
             </div>
             
-            <h2 class="text-dim-gray text-xl font-semibold">{{ server.name }}</h2>
-            <div class="text-xs text-gray-400 break-all">{{ server.url }}</div>
+            <div class="flex-1 md:flex-none md:w-full">
+              <h2 class="text-dim-gray text-base md:text-xl font-semibold">{{ server.name }}</h2>
+              <div class="text-xs text-gray-400 break-all">{{ server.url }}</div>
+            </div>
           </div>
 
           <!-- Right side: Greetings -->
-          <div class="flex-1 flex flex-col gap-3">
+          <div class="w-full md:flex-1 flex flex-col gap-2 md:gap-3">
             <div v-if="getRandomGreetings(server.id, 3).length === 0" class="text-center text-gray-400 py-4">
-              <p class="text-sm">No greetings available for this server.</p>
+              <p class="text-xs md:text-sm">No greetings available for this server.</p>
             </div>
 
             <div 
               v-else
               v-for="(greeting, greetingIndex) in getRandomGreetings(server.id, 3)" 
               :key="greetingIndex" 
-              class="bg-night p-4 rounded-md shadow-sm flex items-center justify-between gap-4"
+              class="bg-night p-3 md:p-4 rounded-md shadow-sm flex items-center justify-between gap-3"
             >
-              <p class="flex-1 text-gray-200 text-sm leading-tight">{{ greeting.text }}</p>
-              <div class="flex gap-2">
+              <p class="flex-1 text-gray-200 text-xs md:text-sm leading-tight">{{ greeting.text }}</p>
+              <div class="flex gap-1.5 md:gap-2">
                 <button 
                   @click="copyAndOpenServer(greeting.text, server.url, server.id)" 
                   class="btn-copy"
                   title="Copy & Open"
                 >
-                  <Icon icon="heroicons:document-duplicate-20-solid" class="w-6 h-6" />
+                  <Icon icon="heroicons:document-duplicate-20-solid" class="w-5 h-5" />
                 </button>
                 <button 
                   @click="editGreeting(greetings.indexOf(greeting))" 
                   class="btn-edit"
                   title="Edit"
                 >
-                  <Icon icon="heroicons:pencil-20-solid" class="w-6 h-6" />
+                  <Icon icon="heroicons:pencil-20-solid" class="w-5 h-5" />
                 </button>
               </div>
             </div>

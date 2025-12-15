@@ -22,9 +22,9 @@ export default defineNuxtConfig({
 
   pwa: {
     manifest: {
-      name: 'Greetings Machine',
-      short_name: 'Greetings',
-      description: 'Meine personalisierte Grußmaschinen-App',
+      name: 'HelloBot',
+      short_name: 'HelloBot',
+      description: 'Your personal greeting bot for Discord and chat servers',
       theme_color: '#1E4545',
       icons: [
         {

@@ -1,23 +1,23 @@
 <template>
-  <div class="p-5 bg-eerie-black rounded-lg text-gray-100">
-    <section class="bg-gray-700 p-5 rounded-lg shadow-md mb-6">
-      <div class="flex justify-end items-center mb-5 pb-3 border-b border-gray-600">
+  <div class="bg-eerie-black rounded-lg text-gray-100">
+    <section class="bg-gray-700 p-3 md:p-5 rounded-lg shadow-md">
+      <div class="flex justify-end items-center mb-3 md:mb-5 pb-2 md:pb-3 border-b border-gray-600">
         <button 
           @click="goToAddGreeting" 
           class="btn-add"
           title="New Greeting"
         >
-          <Icon icon="heroicons:plus-20-solid" class="w-6 h-6" />
+          <Icon icon="heroicons:plus-20-solid" class="w-5 h-5" />
         </button>
       </div>
 
-      <div v-if="greetings.length === 0" class="text-center text-gray-400 py-8">
-        <p class="mb-4">No greetings yet.</p>
+      <div v-if="greetings.length === 0" class="text-center text-gray-400 py-6 md:py-8">
+        <p class="mb-3 md:mb-4 text-sm md:text-base">No greetings yet.</p>
         <button 
           @click="goToAddGreeting"
           class="btn-action-primary mx-auto"
         >
-          <Icon icon="heroicons:plus-20-solid" class="w-6 h-6 mr-2" />
+          <Icon icon="heroicons:plus-20-solid" class="w-5 h-5 mr-2" />
           Create First Greeting
         </button>
       </div>
@@ -28,34 +28,34 @@
           :key="index" 
           class="bg-night rounded-md transition-all duration-200 hover:bg-gray-600 hover:shadow-lg"
         >
-          <div class="flex items-start gap-4 p-4">
-            <!-- Left side: Message (50%) -->
-            <div class="flex-1 text-gray-200 break-words">
+          <div class="flex flex-col md:flex-row items-start gap-3 md:gap-4 p-3 md:p-4">
+            <!-- Message -->
+            <div class="w-full md:flex-1 text-gray-200 text-sm md:text-base break-words">
               {{ greeting.text }}
             </div>
             
-            <!-- Right side: Days, Servers, and Actions (50%) -->
-            <div class="flex-1 flex items-start justify-between gap-4">
+            <!-- Days, Servers, and Actions -->
+            <div class="w-full md:flex-1 flex flex-col sm:flex-row items-start sm:justify-between gap-3">
               <div class="flex flex-col gap-1.5">
                 <!-- Days -->
-                <div class="flex flex-wrap gap-1">
+                <div class="flex flex-wrap gap-0.5 md:gap-1">
                   <span 
                     v-for="day in allDays" 
                     :key="day.key" 
                     :class="greeting.days[day.key] 
                       ? 'bg-gray-600 text-gray-200' 
                       : 'bg-transparent border border-gray-600 text-gray-200 opacity-40'"
-                    class="px-2 py-1 rounded text-xs"
+                    class="px-1.5 md:px-2 py-0.5 md:py-1 rounded text-xs"
                   >
                     {{ day.labelShort }}
                   </span>
                 </div>
                 
                 <!-- Servers (vertical list) -->
-                <div class="flex flex-col gap-1">
+                <div class="flex flex-col gap-0.5 md:gap-1">
                   <span 
                     v-if="greeting.serverIds.includes('all')" 
-                    class="bg-dark-slate-gray px-2 py-1 rounded flex items-center gap-1 text-xs text-gray-200 w-fit"
+                    class="bg-dark-slate-gray px-1.5 md:px-2 py-0.5 md:py-1 rounded flex items-center gap-1 text-xs text-gray-200 w-fit"
                   >
                     <Icon icon="heroicons:check-20-solid" class="w-3 h-3" />
                     All Servers
@@ -64,7 +64,7 @@
                     v-else
                     v-for="serverId in greeting.serverIds" 
                     :key="serverId" 
-                    class="px-2 py-1 rounded flex items-center gap-1 text-xs w-fit"
+                    class="px-1.5 md:px-2 py-0.5 md:py-1 rounded flex items-center gap-1 text-xs w-fit"
                     style="background-color: var(--color-info); color: var(--color-text-secondary);"
                   >
                     <Icon icon="heroicons:server-20-solid" class="w-3 h-3" />
@@ -74,20 +74,20 @@
               </div>
               
               <!-- Action buttons -->
-              <div class="flex gap-2">
+              <div class="flex gap-1.5 md:gap-2">
                     <button 
                       @click="editGreeting(index)" 
                       class="btn-edit"
                       title="Edit"
                     >
-                      <Icon icon="heroicons:pencil-20-solid" class="w-6 h-6" />
+                      <Icon icon="heroicons:pencil-20-solid" class="w-5 h-5" />
                     </button>
                     <button 
                       @click="deleteGreeting(index)" 
                       class="btn-delete"
                       title="Delete"
                     >
-                      <Icon icon="heroicons:trash-20-solid" class="w-6 h-6" />
+                      <Icon icon="heroicons:trash-20-solid" class="w-5 h-5" />
                     </button>
               </div>
             </div>

@@ -1,17 +1,17 @@
 <template>
-  <div class="p-5 bg-eerie-black rounded-lg text-gray-100">
-    <section class="bg-gray-700 p-6 rounded-lg shadow-md max-w-lg mx-auto">
-      <div class="flex flex-col gap-4">
+  <div class="bg-eerie-black rounded-lg text-gray-100">
+    <section class="bg-gray-700 p-4 md:p-6 rounded-lg shadow-md max-w-lg mx-auto">
+      <div class="flex flex-col gap-3 md:gap-4">
         <button @click="exportServers" class="btn-export">
-          <Icon icon="heroicons:server-20-solid" class="w-8 h-8 mr-3" />
+          <Icon icon="heroicons:server-20-solid" class="w-5 h-5 md:w-6 md:h-6 mr-2 md:mr-3" />
           Servers
         </button>
         <button @click="exportGreetings" class="btn-export">
-          <Icon icon="heroicons:chat-bubble-left-ellipsis-20-solid" class="w-8 h-8 mr-3" />
+          <Icon icon="heroicons:chat-bubble-left-ellipsis-20-solid" class="w-5 h-5 md:w-6 md:h-6 mr-2 md:mr-3" />
           Greetings
         </button>
         <button @click="exportAll" class="btn-export-all">
-          <Icon icon="heroicons:arrow-down-tray-20-solid" class="w-8 h-8 mr-3" />
+          <Icon icon="heroicons:arrow-down-tray-20-solid" class="w-5 h-5 md:w-6 md:h-6 mr-2 md:mr-3" />
           Everything
         </button>
       </div>

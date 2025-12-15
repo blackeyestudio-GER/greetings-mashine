@@ -1,6 +1,10 @@
-# Nuxt 3 Minimal Starter
+# HelloBot
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+HelloBot is your personal greeting bot for Discord and chat servers. Manage custom greetings, schedule them by weekday, and quickly copy & open your favorite servers.
+
+Built with Nuxt 3, Vue 3, and Tailwind CSS.
+
+**Live Demo:** [hellobot.blackeyestudio.de](https://hellobot.blackeyestudio.de)
 
 ## Setup
 

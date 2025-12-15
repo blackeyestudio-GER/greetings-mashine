@@ -1,10 +1,10 @@
 <template>
-  <div class="w-full px-5 py-2 drop-shadow-2xl flex flex-row items-center justify-between bg-eerie-black content-start">
+  <div class="w-full px-3 md:px-5 py-3 md:py-4 mb-3 md:mb-4 drop-shadow-2xl flex flex-row items-center justify-between bg-eerie-black content-start">
     <NuxtLink to="/" class="flex flex-row items-center gap-2">
-      <span class="text-4xl text-moonstone">Greetings Machine</span>
+      <span class="text-xl md:text-3xl lg:text-4xl text-moonstone">HelloBot</span>
     </NuxtLink>
-    <button @click="emit('toggleMenu')" class="bg-transparent border-none cursor-pointer p-0">
-      <Icon icon="heroicons:cog-6-tooth-20-solid" class="w-8 h-8 text-moonstone" />
+    <button @click="emit('toggleMenu')" class="bg-transparent border-none cursor-pointer p-1 md:p-0">
+      <Icon icon="heroicons:cog-6-tooth-20-solid" class="w-7 h-7 md:w-8 md:h-8 text-moonstone" />
     </button>
   </div>
 </template>

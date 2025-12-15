@@ -1,9 +1,9 @@
 <template>
-  <div class="bg-night min-h-screen" :data-theme="currentTheme" @click="handleOutsideClick">
+  <div class="bg-night min-h-screen flex flex-col" :data-theme="currentTheme" @click="handleOutsideClick">
     <NuxtLoadingIndicator :throttle="0" :height="2" />
     <AppHeader @toggleMenu="isMenuOpen = !isMenuOpen" />
     <FullScreenMenu :isOpen="isMenuOpen" @closeMenu="isMenuOpen = false" />
-    <div class="mx-auto max-w-screen-2xl px-2 my-2">
+    <div class="mx-auto max-w-screen-2xl w-full px-3 md:px-4 lg:px-6 py-3 md:py-4 flex-1">
       <slot />
     </div>
     <AppFooter />
@@ -50,7 +50,7 @@ onMounted(() => {
 });
 
 useHead({
-  titleTemplate: (title) => title ? `${title} - Greetings Machine` : 'Greetings Machine',
+  titleTemplate: (title) => title ? `${title} - HelloBot` : 'HelloBot',
 });
 </script>
 
