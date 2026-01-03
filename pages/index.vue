@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted, computed } from 'vue';
+import { onMounted, computed, ref } from 'vue';
 import { Icon } from '@iconify/vue';
 import { useGreetingsData, type Greeting } from '~/composables/useGreetingsData';
 import { DAY_INDEX_MAP } from '~/constants';
@@ -15,9 +15,16 @@ const {
 
 const router = useRouter();
 
+// Track current greeting for each server
+const currentGreetings = ref<{ [serverId: string]: Greeting | null }>({});
+
 onMounted(() => {
   loadFromLocalStorage();
   checkAndResetGreetedStatus();
+  // Initialize greetings for all servers
+  servers.value.forEach(server => {
+    rerollGreeting(server.id);
+  });
 });
 
 // Get greetings that are valid for today
@@ -27,13 +34,18 @@ const todayGreetings = computed(() => {
   return greetings.value.filter(greeting => greeting.days[today]);
 });
 
-// Get 3 random greetings for a specific server
-const getRandomGreetings = (serverId: string, count: number) => {
+// Get a random greeting for a specific server
+const getRandomGreeting = (serverId: string): Greeting | null => {
   const serverGreetings = getGreetingsForServer(serverId);
-  if (serverGreetings.length === 0) return [];
+  if (serverGreetings.length === 0) return null;
   
-  const shuffled = [...serverGreetings].sort(() => 0.5 - Math.random());
-  return shuffled.slice(0, Math.min(count, shuffled.length));
+  const randomIndex = Math.floor(Math.random() * serverGreetings.length);
+  return serverGreetings[randomIndex];
+};
+
+// Reroll greeting for a server
+const rerollGreeting = (serverId: string) => {
+  currentGreetings.value[serverId] = getRandomGreeting(serverId);
 };
 
 const copyAndOpenServer = async (greetingText: string, serverUrl: string, serverId: string) => {
@@ -71,7 +83,8 @@ const hasContent = computed(() => servers.value.length > 0 || greetings.value.le
             <ol class="list-decimal list-inside space-y-1.5 text-xs md:text-sm">
               <li>Create <strong>greetings</strong> with text and select the weekdays they should be available</li>
               <li>Add your <strong>servers</strong> (name, URL and optionally an icon)</li>
-              <li>On this main page you'll see 3 random greetings for each server</li>
+              <li>On this main page you'll see 1 random greeting for each server</li>
+              <li>Click "Reroll" to cycle through different messages until you find the perfect one</li>
               <li>Click "Copy & Open" to copy the message and open the server</li>
             </ol>
           </div>
@@ -157,27 +170,32 @@ const hasContent = computed(() => servers.value.length > 0 || greetings.value.le
 
           <!-- Right side: Greetings -->
           <div class="w-full md:flex-1 flex flex-col gap-2 md:gap-3">
-            <div v-if="getRandomGreetings(server.id, 3).length === 0" class="text-center text-gray-400 py-4">
+            <div v-if="!currentGreetings[server.id]" class="text-center text-gray-400 py-4">
               <p class="text-xs md:text-sm">No greetings available for this server.</p>
             </div>
 
             <div 
-              v-else
-              v-for="(greeting, greetingIndex) in getRandomGreetings(server.id, 3)" 
-              :key="greetingIndex" 
+              v-else-if="currentGreetings[server.id]"
               class="bg-night p-3 md:p-4 rounded-md shadow-sm flex items-center justify-between gap-3"
             >
-              <p class="flex-1 text-gray-200 text-xs md:text-sm leading-tight">{{ greeting.text }}</p>
+              <p class="flex-1 text-gray-200 text-xs md:text-sm leading-tight">{{ currentGreetings[server.id]!.text }}</p>
               <div class="flex gap-1.5 md:gap-2">
                 <button 
-                  @click="copyAndOpenServer(greeting.text, server.url, server.id)" 
+                  @click="rerollGreeting(server.id)" 
+                  class="btn-neutral"
+                  title="Reroll Message"
+                >
+                  <Icon icon="heroicons:arrow-path-20-solid" class="w-5 h-5" />
+                </button>
+                <button 
+                  @click="copyAndOpenServer(currentGreetings[server.id]!.text, server.url, server.id)" 
                   class="btn-copy"
                   title="Copy & Open"
                 >
                   <Icon icon="heroicons:document-duplicate-20-solid" class="w-5 h-5" />
                 </button>
                 <button 
-                  @click="editGreeting(greetings.indexOf(greeting))" 
+                  @click="editGreeting(greetings.indexOf(currentGreetings[server.id]!))" 
                   class="btn-edit"
                   title="Edit"
                 >
