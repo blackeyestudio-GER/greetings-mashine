@@ -182,7 +182,7 @@ const hasContent = computed(() => servers.value.length > 0 || greetings.value.le
               <div class="flex gap-1.5 md:gap-2">
                 <button 
                   @click="rerollGreeting(server.id)" 
-                  class="btn-neutral"
+                  class="btn-reroll"
                   title="Reroll Message"
                 >
                   <Icon icon="heroicons:arrow-path-20-solid" class="w-5 h-5" />

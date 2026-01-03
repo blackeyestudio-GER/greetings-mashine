@@ -104,6 +104,17 @@ body {
         color: var(--color-text-secondary);
     }
 
+    .btn-reroll {
+        @apply p-2 border-2 rounded-lg transition-colors duration-200 cursor-pointer inline-flex items-center justify-center;
+        border-color: var(--color-border);
+        color: var(--color-text-muted);
+    }
+    
+    .btn-reroll:hover {
+        background-color: var(--color-hover);
+        color: var(--color-text-primary);
+    }
+
     .btn-action-primary {
         @apply px-5 py-3 border-2 font-semibold rounded-lg transition-colors duration-200 cursor-pointer inline-flex items-center justify-center text-sm md:text-base;
         border-color: var(--color-success);
